@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>运动效果</title>
+	<style type="text/css">
+	body,div,span{
+		margin: 0px;
+		padding: 0px;
+	}
+		.share{
+			width:200px;
+			height: 100px;
+			/*float: left;*/
+			position: relative;
+			background: red;
+			left: -200px;
+		}
+		.text{
+			width: 25px;
+			height: 30px;
+			position: absolute;
+			color: white;
+			left: 200px;
+			background: blue;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+<div class="share">
+	<span class="text">分享</span>
+</div>
+
+
+<script type="text/javascript">
+	window.onload = function () {
+		var oDiv =document.getElementsByTagName('div'),
+			oText=document.getElementsByTagName('span');
+		oDiv.onmouseover=function (){
+			startMove(10,0);
+		}
+		oDiv.onmouseout=function(){
+			startMove(-10,-20)
+		}
+	}
+	var timer=null;
+	function startMove(speed,iTagrt) {
+		//开一个定时器，setInterval(),每30ms执行一次函数
+		//每次执行前清空定时器
+		clearinterval(timer);
+		var oDiv=document.getElementsByTagName('div');
+		timer= setInterval(function(){
+			if (offsetLeft == iTagrt) {
+				clearinterval(timer);
+			} else {
+				oDiv.style.left=oDiv.offsetLeft+speed+'px';}
+	},30);
+
+}
+</script>
+
+</body>
+</html>
