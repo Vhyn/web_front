@@ -7,7 +7,7 @@
 		margin: 0px;
 		padding: 0px;
 	}
-		.share{
+		#share{
 			width:200px;
 			height: 100px;
 			/*float: left;*/
@@ -27,31 +27,31 @@
 	</style>
 </head>
 <body>
-<div class="share">
+<div id="share">
 	<span class="text">分享</span>
 </div>
 
 
 <script type="text/javascript">
 	window.onload = function () {
-		var oDiv =document.getElementsByTagName('div'),
-			oText=document.getElementsByTagName('span');
-		oDiv.onmouseover=function (){
+		var oDiv =document.getElementById('share');
+			// oText=document.getElementsByTagName('span');
+		oDiv.onmouseover= function (){
 			startMove(10,0);
 		}
 		oDiv.onmouseout=function(){
-			startMove(-10,-20)
+			startMove(-10,-200);
 		}
 	}
-	var timer=null;
+	var timer = null;
 	function startMove(speed,iTagrt) {
 		//开一个定时器，setInterval(),每30ms执行一次函数
 		//每次执行前清空定时器
-		clearinterval(timer);
-		var oDiv=document.getElementsByTagName('div');
-		timer= setInterval(function(){
-			if (offsetLeft == iTagrt) {
-				clearinterval(timer);
+		clearInterval(timer);
+		var oDiv=document.getElementById('share');
+		timer = setInterval(function(){
+			if (oDiv.offsetLeft == iTagrt) {
+				clearInterval(timer);
 			} else {
 				oDiv.style.left=oDiv.offsetLeft+speed+'px';}
 	},30);
