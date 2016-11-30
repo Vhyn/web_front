@@ -35,27 +35,31 @@
 <script type="text/javascript">
 	window.onload = function () {
 		var oDiv =document.getElementById('share');
-			// oText=document.getElementsByTagName('span');
 		oDiv.onmouseover= function (){
-			startMove(10,0);
+			startMove(0);
 		}
 		oDiv.onmouseout=function(){
-			startMove(-10,-200);
+			startMove(-200);
 		}
 	}
 	var timer = null;
-	function startMove(speed,iTagrt) {
+	function startMove(iTagrt) {
 		//开一个定时器，setInterval(),每30ms执行一次函数
 		//每次执行前清空定时器
 		clearInterval(timer);
 		var oDiv=document.getElementById('share');
 		timer = setInterval(function(){
+			var speed=0;
+			if (oDiv.offsetLeft>iTagrt) {
+				speed=-10;
+			} else {
+				speed=10;
+			}
 			if (oDiv.offsetLeft == iTagrt) {
 				clearInterval(timer);
 			} else {
 				oDiv.style.left=oDiv.offsetLeft+speed+'px';}
 	},30);
-
 }
 </script>
 
